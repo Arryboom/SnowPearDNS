@@ -1,5 +1,5 @@
 # SnowPearDNS
-![SnowPearDNS](https://github.com/Arryboom/SnowPearDNS/blob/master/ico/pear_128px.png) 
+![SnowPearDNS](https://github.com/Arryboom/SnowPearDNS/blob/master/ico/pear_128px.png)  
 A simple tool to convert your dns request into http dns request so we can avoid some dns hijack attack.
 ## Introduction
 
@@ -20,12 +20,12 @@ A simple tool to convert your dns request into http dns request so we can avoid 
   go get github.com/muesli/cache2go
   go build httpdns_plugs.go
   ```
-  or you can download compiled executables for win if your are using Windows: 
-  **[64bit_forWindows  ](https://github.com/arryboom/SnowPearDNS/master/blob/release/snowpeardns_64.exe "snowpeardns64.exe")**  
-  **[32bit_forWindows  ](https://github.com/arryboom/SnowPearDNS/master/blob/release/snowpeardns_32.exe  "snowpeardns32.exe")**  
-  or download here for linux if you are using Linux: 
-  **[64bit_forLinux_ELF  ](https://github.com/arryboom/SnowPearDNS/master/blob/release/snowpeardns_64 "snowpeardns64")**  
-  **[32bit_forLinux_ELF  ](https://github.com/arryboom/SnowPearDNS/master/blob/release/snowpeardns_32 "snowpeardns32")**  
+  or you can download compiled executables for win if your are using Windows:  
+  **[64bit_forWindows  ](https://github.com/arryboom/SnowPearDNS/blob/master/release/snowpeardns_64.exe "snowpeardns64.exe")**  
+  **[32bit_forWindows  ](https://github.com/Arryboom/SnowPearDNS/blob/master/release/snowpeardns_32.exe "snowpeardns32.exe")**  
+  or download here for linux if you are using Linux:  
+  **[64bit_forLinux_ELF  ](https://github.com/arryboom/SnowPearDNS/blob/master/release/snowpeardns_64 "snowpeardns64")**  
+  **[32bit_forLinux_ELF  ](https://github.com/arryboom/SnowPearDNS/blob/master/release/snowpeardns_32 "snowpeardns32")**  
   3.running the executables you got from last step and Configuration your local DNS server to 127.0.0.1.
   4.Enjoy your browsing!
 
@@ -67,15 +67,15 @@ CRC32: D258ED16
 
 ## Tips
 
-1. Do you have a dns record cache in this tool?
+1. Do you have a dns record cache in this tool?  
   Yes,since sometimes http request will lost and DNSpod has limit on concurrency requestion made the http dns request very slow,I've add a memcache by using muesli's cache2go,default expiration time of one record haven't been hited is One day(60\*60\*24\*seconds).
-2. How can I know DNSpod's server works good for me,what if there is a high latency to DNSpod server from my network?
+2. How can I know DNSpod's server works good for me,what if there is a high latency to DNSpod server from my network?  
   Well,you can using ping tool to check the latency between your network and DNSpod server by:
   ```ping 119.29.29.29```
   remember that the ICMP echo back latency in ms may not the real latency compare to do one http request to dnspod on your network.If it's really too slow,you may got a vps which you can trust and has no dns hijack in the cloud network and running a httpdns server like dnspod,and change the dns server url in SnowPearDNS.go,or you can do some encryption modify to improve the security performence.But The better way here I think you can try some other dns encryption project like
   https://github.com/bitbeans/SimpleDnsCrypt
   This opensource project has been provided a lots of dns encrypted server all over the world.
-3. How's the security of this tool
+3. How's the security of this tool?  
   As I said at first "currently there has no evidence showed that ISP will hijack the http dns request between user's network and DNSpod server In China",so if you got wrong dns record or you found your ISP hijacked the httpdns request,please let me know and I'll consider to develop a better dns tool with encryption which has it's own server and client. 
 
 ## Thanks
