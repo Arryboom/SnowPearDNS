@@ -21,11 +21,11 @@ A simple tool to convert your dns request into http dns request so we can avoid 
   go build httpdns_plugs.go
   ```
   or you can download compiled executables for win if your are using Windows:  
-  **[64bit_forWindows  ](https://github.com/arryboom/SnowPearDNS/blob/master/release/snowpeardns_64.exe "snowpeardns64.exe")**  
-  **[32bit_forWindows  ](https://github.com/Arryboom/SnowPearDNS/blob/master/release/snowpeardns_32.exe "snowpeardns32.exe")**  
+  **[64bit_forWindows  ](https://github.com/Arryboom/SnowPearDNS/raw/master/release/snowpeardns_64.exe "snowpeardns64.exe")**  
+  **[32bit_forWindows  ](https://github.com/Arryboom/SnowPearDNS/raw/master/release/snowpeardns_32.exe  "snowpeardns32.exe")**  
   or download here for linux if you are using Linux:  
-  **[64bit_forLinux_ELF  ](https://github.com/arryboom/SnowPearDNS/blob/master/release/snowpeardns_64 "snowpeardns64")**  
-  **[32bit_forLinux_ELF  ](https://github.com/arryboom/SnowPearDNS/blob/master/release/snowpeardns_32 "snowpeardns32")**  
+  **[64bit_forLinux_ELF  ](https://github.com/Arryboom/SnowPearDNS/raw/master/release/snowpeardns_64 "snowpeardns64")**  
+  **[32bit_forLinux_ELF  ](https://github.com/Arryboom/SnowPearDNS/raw/master/release/snowpeardns_32 "snowpeardns32")**  
   3.running the executables you got from last step and Configuration your local DNS server to 127.0.0.1.
   4.Enjoy your browsing!
 
