@@ -11,9 +11,8 @@ A simple tool to convert your dns request into http dns request so we can avoid 
 - Language:golang
 
 ## Usage
-
-1. Clone this project to your local disk.
-2. Open this project's folder and Compile SnowPearDNS.go to executables:
+**1.** Clone this project to your local disk.
+**2.** Open this project's folder and Compile SnowPearDNS.go to executables:
   ```
   go get github.com/miekg/dns
   go build github.com/miekg/dns
@@ -26,8 +25,8 @@ A simple tool to convert your dns request into http dns request so we can avoid 
   or download here for linux if you are using Linux:  
   **[64bit_forLinux_ELF](https://github.com/Arryboom/SnowPearDNS/raw/master/release/snowpear_64 "snowpeardns64")**  
   **[32bit_forLinux_ELF](https://github.com/Arryboom/SnowPearDNS/raw/master/release/snowpear_32 "snowpeardns32")**  
-  3.running the executables you got from last step and Configuration your local DNS server to 127.0.0.1.  
-  4.Enjoy your browsing!
+**3.** Running the executables you got from last step and Configuration your local DNS server to 127.0.0.1.  
+**4.** Enjoy your browsing!
 
 
 **FileInfo:** 
@@ -79,9 +78,9 @@ CRC32: D258ED16
   >As I said at first "currently there has no evidence showed that ISP will hijack the http dns request between user's network and DNSpod server In China",so if you got wrong dns record or you found your ISP hijacked the httpdns request,please let me know and I'll consider to develop a better dns tool with encryption which has it's own server and client. 
 
 ## Thanks
-- miekg
+- miekg  
   https://github.com/miekg/dns
-- fangdingjun
+- fangdingjun  
   https://github.com/fangdingjun/gdns
-- muesli
+- muesli  
   https://github.com/muesli/cache2go
