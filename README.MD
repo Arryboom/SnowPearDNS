@@ -70,11 +70,11 @@ CRC32: D258ED16
 1. Do you have a dns record cache in this tool?  
   >Yes,since sometimes http request will lost and DNSpod has limit on concurrency requestion made the http dns request very slow,I've add a memcache by using muesli's cache2go,default expiration time of one record haven't been hited is One day(60\*60\*24\*seconds).
 2. How can I know DNSpod's server works good for me,what if there is a high latency to DNSpod server from my network?  
-  >Well,you can using ping tool to check the latency between your network and DNSpod server by:
-  ```ping 119.29.29.29```
+  >Well,you can using ping tool to check the latency between your network and DNSpod server by:  
+  ```ping 119.29.29.29```  
   remember that the ICMP echo back latency in ms may not the real latency compare to do one http request to dnspod on your network.If it's really too slow,you may got a vps which you can trust and has no dns hijack in the cloud network and running a httpdns server like dnspod,and change the dns server url in SnowPearDNS.go,or you can do some encryption modify to improve the security performence.But The better way here I think you can try some other dns encryption project like
   https://github.com/bitbeans/SimpleDnsCrypt
-  This opensource project has been provided a lots of dns encrypted server all over the world.
+  This opensource project has been provided a lots of dns encrypted server all over the world.  
 3. How's the security of this tool?  
   >As I said at first "currently there has no evidence showed that ISP will hijack the http dns request between user's network and DNSpod server In China",so if you got wrong dns record or you found your ISP hijacked the httpdns request,please let me know and I'll consider to develop a better dns tool with encryption which has it's own server and client. 
 
