@@ -5,7 +5,7 @@ A simple tool to convert your dns request into http dns request so we can avoid 
 
 > ISP's DNS hijack In China has been drive me nuts for a long time,and I've been tried for lots of dns encryption projects,their encryption and RFC standard extend was really good,but due to most of these projects doesn't have DNS server in China,so it always makes my daily browsing slowly.
 
-  Finally,I found that DNSpod have a simple Httpdns API server in China and currently there has no evidence showed ISP will hijack the http dns request between user's network and DNSpod server,so I developed this tiny tool to make it work.
+  Finally,I found that DNSpod have a simple Httpdns API server in China and currently there has no evidence showed which ISP already hijack the http dns request between user's network and DNSpod server, so I developed this tiny tool to make it work.
 
 - Current Version:   **1.1**
 - Language:golang
@@ -67,7 +67,7 @@ CRC32: D258ED16
 ## Tips
 
 1. Do you have a dns record cache in this tool?  
-  >Yes,since sometimes http request will lost and DNSpod has limit on concurrency requestion made the http dns request very slow,I've add a memcache by using muesli's cache2go,default expiration time of one record haven't been hited is One day(60\*60\*24\*seconds).
+  >Yes,since sometimes http request will lost and DNSpod has limit on concurrency request made the http dns request very slow,I've add a memcache by using muesli's cache2go,default expiration time of one record haven't been hited is One day(60\*60\*24\*seconds).
 2. How can I know DNSpod's server works good for me,what if there is a high latency to DNSpod server from my network?  
   >Well,you can using ping tool to check the latency between your network and DNSpod server by:  
   ```ping 119.29.29.29```  
@@ -75,7 +75,7 @@ CRC32: D258ED16
   https://github.com/bitbeans/SimpleDnsCrypt
   This opensource project has been provided a lots of dns encrypted server all over the world.  
 3. How's the security of this tool?  
-  >As I said at first "currently there has no evidence showed that ISP will hijack the http dns request between user's network and DNSpod server In China",so if you got wrong dns record or you found your ISP hijacked the httpdns request,please let me know and I'll consider to develop a better dns tool with encryption which has it's own server and client. 
+  >As I said at first "currently there has no evidence showed that which ISP already hijack the http dns request between user's network and DNSpod server In China",so if you got wrong dns record or you found your ISP hijacked the httpdns request,please let me know and I'll consider to develop a better dns tool with encryption which has it's own server and client. 
 
 ## Thanks
 - miekg  
