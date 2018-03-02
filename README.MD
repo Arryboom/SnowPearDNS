@@ -7,7 +7,7 @@ A simple tool to convert your dns request into http dns request so we can avoid 
 
   Finally,I found that DNSpod have a simple Httpdns API server in China and currently there has no evidence showed ISP will hijack the http dns request between user's network and DNSpod server,so I developed this tiny tool to make it work.
 
-- Current Version:   ** 1.1 **
+- Current Version:   **1.1**
 - Language:golang
 
 ## Usage
