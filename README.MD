@@ -1,4 +1,5 @@
 # SnowPearDNS
+![GoReport](https://goreportcard.com/badge/github.com/arryboom/snowpeardns)
 ![SnowPearDNS](https://github.com/Arryboom/SnowPearDNS/blob/master/ico/pear_128px.png)  
 A simple tool to convert your dns request into http dns request so we can avoid some dns hijack attack.
 ## Introduction
