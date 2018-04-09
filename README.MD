@@ -12,7 +12,7 @@ A simple tool to convert your dns request into http dns request so we can avoid 
 - Language:golang
 
 ## Usage
-**1.** Clone this project to your local disk.
+**1.** Clone this project to your local disk.  
 **2.** Open this project's folder and Compile SnowPearDNS.go to executables:
   ```
   go get github.com/miekg/dns
