@@ -27,6 +27,7 @@ A simple tool to convert your dns request into http dns request so we can avoid 
   **[64bit_forLinux_ELF](https://github.com/Arryboom/SnowPearDNS/raw/master/release/snowpear_64 "snowpeardns64")**  
   **[32bit_forLinux_ELF](https://github.com/Arryboom/SnowPearDNS/raw/master/release/snowpear_32 "snowpeardns32")**  
 **3.** Running the executables you got from last step and Configuration your local DNS server to 127.0.0.1.  
+[!s](/ex.png)
 **4.** Enjoy your browsing!
 
 
