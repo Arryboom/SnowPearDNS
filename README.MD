@@ -18,9 +18,9 @@ A simple tool to convert your dns request into http dns request so we can avoid 
   go get github.com/miekg/dns
   go build github.com/miekg/dns
   go get github.com/muesli/cache2go
-  go build httpdns_plugs.go
+  go build SnowPearDNS.go
   ```
-  or you can download compiled executables for win if your are using Windows:  
+  or you can directly download compiled executables for win if your are using Windows:  
   **[64bit_forWindows](https://github.com/Arryboom/SnowPearDNS/raw/master/release/snowpeardns_64.exe "snowpeardns64.exe")**  
   **[32bit_forWindows](https://github.com/Arryboom/SnowPearDNS/raw/master/release/snowpeardns_32.exe  "snowpeardns32.exe")**  
   or download here for linux if you are using Linux:  
