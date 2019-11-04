@@ -9,39 +9,30 @@ import (
 	"net/http"
 	"github.com/muesli/cache2go"
 	"time"
+	"github.com/arryboom/go-hostsparser"
+	"flag"
 )
-/*
-var(
-var server_url string = "http://119.29.29.29/d?dn=%s"
-var version string ="1.1"
-var cache_time :=60*60*24
-var dnscache := cache2go.Cache("DNCACHE")
-)
-*/
+
 var(
 server_url string = "http://119.29.29.29/d?dn=%s"
-version string ="1.1"
+version string ="1.3"
 //cache_time :=60*60*24
 dnscache= cache2go.Cache("DNCACHE")
+hostsflag *bool
 )
 
 
 func get_a(domain string) []string {
 //Here we add cache
-//	var buf []byte
 	var c_buf string
 	ip := []string{}
 	dncres, dncerr := dnscache.Value(domain)
 	if dncerr == nil {
 		//fmt.Println("Found value in cache:", dncres.Data().(string))
 		//found cache
-//		fmt.Println("Found value in cache")
 		c_buf=dncres.Data().(string)
 	} else {
-//	fmt.Println("notFound value in cache")
 	//Didn't found cache
-	//fmt.Println("Error retrieving value from cache:", dncerr)
-	
 	url := fmt.Sprintf(server_url, domain)
 
 	r, err := http.Get(url)
@@ -111,10 +102,24 @@ func byteString(p []byte) string {
         }
         return string(p)
 }
+func add_localhosts(){
+	if *hostsflag{
+	hostsMap, err := hostsparser.ParseHosts(hostsparser.ReadHostsFile())
+	if err != nil {
+		return
+	}
+	for k,v :=range hostsMap{
+	dnscache.Add(k+".",60*60*24*time.Second,v)
+	}
+}
+}
 func main() {
 	fmt.Println("SnowPearDNS version: ",version)
 	fmt.Println("https://github.com/arryboom/SnowPearDNS")
+	hostsflag =flag.Bool("hosts",false,"using local hosts file,default false")
+	flag.Parse()
 	fmt.Println("Start Dns Server Now...")
+	add_localhosts()
 	dns.HandleFunc(".", handleRoot)
 	err := dns.ListenAndServe("0.0.0.0:53", "udp", nil)
 	if err != nil {
