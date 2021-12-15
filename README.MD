@@ -6,7 +6,7 @@ A simple tool to convert your dns request into http dns request so we can avoid 
 
 > ISP's DNS hijack In China has been drive me nuts for a long time,and I've been tried for lots of dns encryption projects,their encryption and RFC standard extend was really good,but due to most of these projects doesn't have DNS server in China,so it always makes my daily browsing slowly.
 
-  Finally,I found that DNSpod have a simple Httpdns API server in China and currently there has no evidence showed which ISP already hijack the http dns request between user's network and DNSpod server, so I developed this tiny tool to make it work.
+  finally,I found that DNSpod have a simple Httpdns API server in China and currently there has no evidence showed which ISP already hijack the http dns request between user's network and DNSpod server, so I developed this tiny tool to make it work.
   > by version 1.5 now this tool will use standard DOH which will access https://doh.pub/dns-query for results,which considered as a better security performance.
 
 - Current Version:   **1.5**
@@ -31,35 +31,35 @@ A simple tool to convert your dns request into http dns request so we can avoid 
 
 **FileInfo:** 
 
-File: snowpeardns_64.exe
-Size: 8172544 bytes
-Modified: 2021-12-15, 12:03:25
-MD5: 9A7DAB4F8D2327495DDEBBDCFF273C15
-SHA1: 5E8AD32FFA3F54FC2B0DA3CD32B210CE5659D63E
-CRC32: 3FD44751
+File: snowpeardns_64.exe  
+Size: 8172544 bytes  
+Modified: 2021-12-15, 12:03:25  
+MD5: 9A7DAB4F8D2327495DDEBBDCFF273C15  
+SHA1: 5E8AD32FFA3F54FC2B0DA3CD32B210CE5659D63E  
+CRC32: 3FD44751  
 
-File: snowpeardns_32.exe
-Size: 7299072 bytes
-Modified: 2021-12-15, 12:03:21
-MD5: 72BFF01ADD8CCF2D1D9855F2A36B1C15
-SHA1: 97C5D6089981D5D9B48260458048DBA89A2FB453
-CRC32: EF39664A
+File: snowpeardns_32.exe  
+Size: 7299072 bytes  
+Modified: 2021-12-15, 12:03:21  
+MD5: 72BFF01ADD8CCF2D1D9855F2A36B1C15  
+SHA1: 97C5D6089981D5D9B48260458048DBA89A2FB453  
+CRC32: EF39664A  
 
 
 
-File: snowpear_64  
-Size: 8581391 bytes
-Modified: 2021-12-15, 11:51:33
-MD5: 4AE9BB5414BC5D46C3437DDD75A60B98
-SHA1: 6894EEFD101C19CA1C413FA10E39C6920626B419
-CRC32: 52E22173
+File: snowpear_64   
+Size: 8581391 bytes  
+Modified: 2021-12-15, 11:51:33  
+MD5: 4AE9BB5414BC5D46C3437DDD75A60B98  
+SHA1: 6894EEFD101C19CA1C413FA10E39C6920626B419  
+CRC32: 52E22173  
 
 File: snowpear_32  
-Size: 7307992 bytes
-Modified: 2021-12-15, 11:51:33
-MD5: B58158F1077E9A8FAFB648DB9675EC59
-SHA1: E0F1A11E002EE3C1A4D5AAD23FBD0ABB5949D207
-CRC32: 8552DB29
+Size: 7307992 bytes  
+Modified: 2021-12-15, 11:51:33  
+MD5: B58158F1077E9A8FAFB648DB9675EC59  
+SHA1: E0F1A11E002EE3C1A4D5AAD23FBD0ABB5949D207  
+CRC32: 8552DB29  
 
 
 
