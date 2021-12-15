@@ -78,8 +78,8 @@ CRC32: 8552DB29
   >As I said at first "currently there has no evidence showed that which ISP already hijack the http dns request between user's network and DNSpod server In China",so if you got wrong dns record or you found your ISP hijacked the httpdns request,please let me know and I'll consider to develop a better dns tool with encryption which has it's own server and client.   
   >For security reason it will not using your local hosts file by default,but you can enable it by running it with **-hosts** params.
   >by version 1.5 now this tool will use standard DOH which will access https://doh.pub/dns-query for results,which consider better security performance.
-4. on windows there need 2 dns set on ethernet settings?
-  >the tool itself by default will listen on 0.0.0.0,so simple put main DNS as 127.0.0.1,another to your LAN address.(which like 192.168.1.x 172.0.1.x...)
+4. on windows there need at least 2 dns ipaddress set on ethernet settings?
+  >the tool itself by default will listen on ```0.0.0.0```,so simple put main DNS as 127.0.0.1,another to your LAN address.(which like 192.168.1.x 172.0.1.x...)  
   >also by this you can serve the other teminal in your LAN if you like.
 
 ## Thanks
