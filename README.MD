@@ -67,7 +67,7 @@ CRC32: 8552DB29
 ## Tips
 
 1. Do you have a dns record cache in this tool?  
-  >Yes,since sometimes http request will lost and DNSpod has limit on concurrency request made the http dns request very slow,I've add a memcache by using muesli's cache2go,default expiration time of one record haven't been hited is One day(60\*60\*24\*seconds).  Since it's cached in memory so everytime you restart this process it will force clear cache and regenerate them.   
+  >Yes,since sometimes http request will lost and DNSpod has limit on concurrency request made the http dns request very slow,I've add a memcache by using muesli's cache2go,default expiration time of one record haven't been hited is One day(60\*60\*24\*seconds).  Since it's cached in memory so everytime you restart this process it will force clear cache.   
 2. How can I know DNSpod's server works good for me,what if there is a high latency to DNSpod server from my network?  
   >Well,you can using ping tool to check the latency between your network and DNSpod server by:  
   ```ping 119.29.29.29```  
