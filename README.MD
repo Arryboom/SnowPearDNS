@@ -7,18 +7,15 @@ A simple tool to convert your dns request into http dns request so we can avoid 
 > ISP's DNS hijack In China has been drive me nuts for a long time,and I've been tried for lots of dns encryption projects,their encryption and RFC standard extend was really good,but due to most of these projects doesn't have DNS server in China,so it always makes my daily browsing slowly.
 
   Finally,I found that DNSpod have a simple Httpdns API server in China and currently there has no evidence showed which ISP already hijack the http dns request between user's network and DNSpod server, so I developed this tiny tool to make it work.
+  > by version 1.5 now this tool will use standard DOH which will access https://doh.pub/dns-query for results,which considered as a better security performance.
 
-- Current Version:   **1.3**
+- Current Version:   **1.5**
 - Language:golang
 
 ## Usage
 **1.** Clone this project to your local disk.  
 **2.** Open this project's folder and Compile SnowPearDNS.go to executables:
   ```
-  go get github.com/miekg/dns
-  go build github.com/miekg/dns
-  go get github.com/muesli/cache2go
-  go get github.com/arryboom/go-hostsparser
   go build SnowPearDNS.go
   ```
   or you can directly download compiled executables for win if your are using Windows:  
@@ -34,37 +31,36 @@ A simple tool to convert your dns request into http dns request so we can avoid 
 
 **FileInfo:** 
 
-File: snowpeardns_64.exe  
-Size: 8187904 bytes  
-File Version: 1.3.0.0  
-Modified: 2019-11-5, 5:38:18  
-MD5: 63C204A73A28177F16522797853FDB0C  
-SHA1: 299C7FE2517AAE60FCFE831AB3B458AE5B8D4FFC  
-CRC32: D3E8FA32  
+File: snowpeardns_64.exe
+Size: 8172544 bytes
+Modified: 2021-12-15, 12:03:25
+MD5: 9A7DAB4F8D2327495DDEBBDCFF273C15
+SHA1: 5E8AD32FFA3F54FC2B0DA3CD32B210CE5659D63E
+CRC32: 3FD44751
 
-File: snowpeardns_32.exe  
-Size: 7284224 bytes  
-File Version: 1.3.0.0  
-Modified: 2019-11-5, 5:38:03  
-MD5: C9ABF800D2F3B98AB98CE11F46C1A1BE  
-SHA1: D630A7C31FB43469B79397D9E545D3CC15D27AF1  
-CRC32: CF8D9E99  
+File: snowpeardns_32.exe
+Size: 7299072 bytes
+Modified: 2021-12-15, 12:03:21
+MD5: 72BFF01ADD8CCF2D1D9855F2A36B1C15
+SHA1: 97C5D6089981D5D9B48260458048DBA89A2FB453
+CRC32: EF39664A
 
 
 
 File: snowpear_64  
-Size: 8454488 bytes  
-Modified: 2019-11-5, 5:38:31  
-MD5: 597408A44FBE67C52F6394497FA63AB1  
-SHA1: 58E0BBEBFFF0860080B9E1A9ED7FE23C6C1C7513  
-CRC32: AFF8CA53  
+Size: 8581391 bytes
+Modified: 2021-12-15, 11:51:33
+MD5: 4AE9BB5414BC5D46C3437DDD75A60B98
+SHA1: 6894EEFD101C19CA1C413FA10E39C6920626B419
+CRC32: 52E22173
 
 File: snowpear_32  
-Size: 7514642 bytes  
-Modified: 2019-11-5, 5:38:51  
-MD5: 6D6CF9EEDCB91CC72C987AF53115A690  
-SHA1: 773ED0573CF134BD76B33E16F9A0B01A7E5037C6  
-CRC32: 75758C2F  
+Size: 7307992 bytes
+Modified: 2021-12-15, 11:51:33
+MD5: B58158F1077E9A8FAFB648DB9675EC59
+SHA1: E0F1A11E002EE3C1A4D5AAD23FBD0ABB5949D207
+CRC32: 8552DB29
+
 
 
 
@@ -80,7 +76,8 @@ CRC32: 75758C2F
   This opensource project has been provided a lots of dns encrypted server all over the world.  
 3. How's the security of this tool?  
   >As I said at first "currently there has no evidence showed that which ISP already hijack the http dns request between user's network and DNSpod server In China",so if you got wrong dns record or you found your ISP hijacked the httpdns request,please let me know and I'll consider to develop a better dns tool with encryption which has it's own server and client.   
-  >For security reason it will not using your local hosts file by default,but you can enable it by running it with ``-hosts`` params.
+  >For security reason it will not using your local hosts file by default,but you can enable it by running it with **-hosts** params.
+  >by version 1.5 now this tool will use standard DOH which will access https://doh.pub/dns-query for results,which consider better security performance.
 
 ## Thanks
 - miekg  
