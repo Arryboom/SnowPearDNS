@@ -79,7 +79,8 @@ CRC32: 8552DB29
   >For security reason it will not using your local hosts file by default,but you can enable it by running it with **-hosts** params.
   >by version 1.5 now this tool will use standard DOH which will access https://doh.pub/dns-query for results,which consider better security performance.
 4. on windows there need 2 dns set on ethernet settings?
-  >the tool itself by default will listen on 0.0.0.0,so simple put main DNS as 127.0.0.1,another to your LAN address.(which like 192.168.1.x 172.0.1.x...) 
+  >the tool itself by default will listen on 0.0.0.0,so simple put main DNS as 127.0.0.1,another to your LAN address.(which like 192.168.1.x 172.0.1.x...)
+  >also by this you can serve the other teminal in your LAN if you like.
 
 ## Thanks
 - miekg  
