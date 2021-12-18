@@ -9,7 +9,7 @@ A simple tool to convert your dns request into http dns request so we can avoid 
   finally,I found that DNSpod have a simple Httpdns API server in China and currently there has no evidence showed which ISP already hijack the http dns request between user's network and DNSpod server, so I developed this tiny tool to make it work.
   > by version 1.5 now this tool will use standard DOH which will access https://doh.pub/dns-query for results,which considered as a better security performance.
 
-- Current Version:   **1.6**
+- Current Version:   **1.7**
 - Language:golang  
 
 ## Usage
@@ -27,41 +27,6 @@ A simple tool to convert your dns request into http dns request so we can avoid 
 **3.** Running the executables you got from last step and Configuration your local DNS server to 127.0.0.1.  
 ![example](/ex.png)  
 **4.** Enjoy your browsing!
-
-
-**FileInfo:** 
-
-File: snowpeardns_64.exe  
-Size: 8179712 bytes  
-Modified: 2021-12-15, 14:20:24  
-MD5: 7AE99B3D4D2418703355C589AD81709E  
-SHA1: 6CB6F452CC1A8C1C539ACE5D6829676AFDE25E16  
-CRC32: 35456F76  
-
-File: snowpeardns_32.exe   
-Size: 7304704 bytes  
-Modified: 2021-12-15, 14:20:20  
-MD5: FF90C6A7CC712E7760E8F1CEB7B339EE  
-SHA1: B2DC431442AC15AF1F722D67EAC6919BDBF46EEC  
-CRC32: 0FF8BDC9  
-
-
-
-
-File: snowpear_64   
-Size: 8587245 bytes  
-Modified: 2021-12-15, 14:18:00  
-MD5: D7E44AB18F15492B8C89888E0718E300  
-SHA1: C2187EB31ACC242984BE858EF5F1D1151533D0DB  
-CRC32: 60F2029A   
-
-File: snowpear_32  
-Size: 7309386 bytes  
-Modified: 2021-12-15, 14:18:01  
-MD5: AC57333E5FE3D3FB2EE55D6789D6A2B6  
-SHA1: E2B881388C5EA88C403DF4A69F933A1A6D73AE2E  
-CRC32: 39C3F3BB  
-
 
 
 

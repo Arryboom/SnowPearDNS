@@ -7,6 +7,7 @@ import (
 	"io/ioutil"
 	"log"
 	"math/rand"
+	"net"
 	"net/http"
 	"strings"
 	"time"
@@ -20,7 +21,7 @@ var (
 	//server_url string = "http://119.29.29.29/d?dn=%s"
 	server_url string = "https://doh.pub/dns-query?name=%s&type=%s"
 	//server_url string
-	version string = "1.6"
+	version string = "1.7"
 	//cache_time :=60*60*24
 	dnsAcache  = cache2go.Cache("DNACACHE")
 	dnsCcache  = cache2go.Cache("DNCCACHE")
@@ -91,6 +92,7 @@ func init_dohip() bool {
 func get_a(domain string) []string {
 	//Here we add cache
 	var c_buf string
+	var cnamesign bool = false
 	ip := []string{}
 	dncres, dncerr := dnsAcache.Value(domain)
 	if dncerr == nil {
@@ -124,11 +126,12 @@ func get_a(domain string) []string {
 			fmt.Println(err)
 			return []string{}
 		} else {
-			if resp.Status != 0 || resp.Answer == nil {
+			if resp.Status != 0 && resp.Status != 3 || resp.Answer == nil {
 				fmt.Println(err)
 				return []string{}
 			}
 		}
+
 		//fmt.Printf("%+v\n", resp)
 		for _, vl := range resp.Answer {
 			//fmt.Println(vl)
@@ -139,7 +142,6 @@ func get_a(domain string) []string {
 
 					c_buf = vl.Data
 				}
-
 			}
 			if vl.Thattype == 5 {
 				dntres, dnterr := dnsCcache.Value(domain)
@@ -153,6 +155,7 @@ func get_a(domain string) []string {
 				} else {
 					dnsCcache.Add(domain, cache_time, vl.Data)
 				}
+				cnamesign = true
 			}
 
 		}
@@ -161,12 +164,23 @@ func get_a(domain string) []string {
 
 		//	dnscache.Add(domain,5*time.Second,c_buf)
 	}
+	if c_buf == "" && cnamesign {
+		dntres, dnterr := dnsCcache.Value(domain)
+		if dnterr != nil {
+			return []string{}
+		}
+		var tempc string = dntres.Data().(string)
+		c_buf = tempc
+		dnsAcache.Add(domain, cache_time, c_buf)
+		//fmt.Println(c_buf)
 
+	}
 	ips := strings.Split(c_buf, ";")
 
 	for _, ii := range ips {
 		ip = append(ip, string(ii))
 	}
+	//fmt.Printf("%+v\n", ip)
 	return ip
 
 }
@@ -205,7 +219,7 @@ func get_cname(domain string) []string {
 			fmt.Println(err)
 			return []string{}
 		} else {
-			if resp.Status != 0 || resp.Answer == nil {
+			if resp.Status != 0 && resp.Status != 3 || resp.Answer == nil {
 				fmt.Println(err)
 				return []string{}
 			}
@@ -268,15 +282,39 @@ func handleRoot(w dns.ResponseWriter, r *dns.Msg) {
 
 		msg := new(dns.Msg)
 		msg.SetReply(r)
-
+		msg_cname := new(dns.Msg)
+		msg_cname.SetReply(r)
+		var cname_sign bool = false
+		var a_sign bool = false
 		for _, ii := range ip {
+
+			///
+			if net.ParseIP(ii) == nil && ii != "" {
+				s := fmt.Sprintf("%s 3600 IN CNAME %s",
+					dns.Fqdn(domain), ii)
+				//fmt.Println(s)
+				rr, _ := dns.NewRR(s)
+				msg_cname.Answer = append(msg.Answer, rr)
+				msg_cname.Rcode = 3
+				cname_sign = true
+			}
+			/*			s := fmt.Sprintf("%s 3600 IN A %s",
+							dns.Fqdn(domain), ii)
+						rr, _ := dns.NewRR(s)
+						msg.Answer = append(msg.Answer, rr)*/
 			s := fmt.Sprintf("%s 3600 IN A %s",
 				dns.Fqdn(domain), ii)
 			rr, _ := dns.NewRR(s)
 			msg.Answer = append(msg.Answer, rr)
+			a_sign = true
 		}
-
-		w.WriteMsg(msg)
+		//fmt.Printf("%+v\n", msg)
+		if a_sign {
+			w.WriteMsg(msg)
+		}
+		if cname_sign {
+			w.WriteMsg(msg_cname)
+		}
 		return
 	}
 	if r.Question[0].Qtype == dns.TypeCNAME {

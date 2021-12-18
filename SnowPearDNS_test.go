@@ -81,15 +81,27 @@ func PrettyPrint(data interface{}) {
 
 func Test_get_a(t *testing.T) {
 	Convey("get_a_test", t, func() {
-		var domain string = "www.github.com"
-		t.Logf("start test bytes")
-		//fmt.Printf(string(get_a(domain)))
-		for _, vl := range get_a(domain) {
-			fmt.Println(vl)
-		}
-		fmt.Println("get_a")
-		//t.Log(byteString(retbyte))
-		So(get_a(domain)[0], ShouldNotBeBlank)
+		Convey("get_n_test", func() {
+			var domain string = "www.github.com"
+			t.Logf("start test bytes")
+			//fmt.Printf(string(get_a(domain)))
+			for _, vl := range get_a(domain) {
+				fmt.Println(vl)
+			}
+			fmt.Println("get_a")
+			//t.Log(byteString(retbyte))
+			So(get_a(domain)[0], ShouldNotBeBlank)
+		})
+		Convey("mix cnametest", func() {
+			//hdls3.douyucdn.cn
+			t.Logf("ah")
+			var domain string = "hdls3.douyucdn.cn"
+			//fmt.Println(get_a(domain)[0])
+			x := get_a(domain)[0]
+			//fmt.Print()
+			fmt.Printf("%+v\n", x)
+			So(x, ShouldNotBeBlank)
+		})
 	})
 }
 func Test_get_cname(t *testing.T) {
