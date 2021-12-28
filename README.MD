@@ -6,7 +6,7 @@ A simple tool to convert your dns request into http dns request so we can avoid 
 
 > ISP's DNS hijack In China has been drive me nuts for a long time,and I've been tried for lots of dns encryption projects,their encryption and RFC standard extend was really good,but due to most of these projects doesn't have DNS server in China,so it always makes my daily browsing slowly.
 
-  finally,I found that DNSpod have a simple Httpdns API server in China and currently there has no evidence showed which ISP already hijack the http dns request between user's network and DNSpod server, so I developed this tiny tool to make it work.
+  finally,I found that DNSpod have a simple Httpdns API server in China and currently there has no evidence showed which ISP already hijack the http dns request between user's network and DNSpod server, so I developed this tiny tool to make it work.  
   > by version 1.5 now this tool will use standard DOH which will access https://doh.pub/dns-query for results,which considered as a better security performance.
 
 - Current Version:   **1.7**
@@ -42,7 +42,7 @@ A simple tool to convert your dns request into http dns request so we can avoid 
   This opensource project has been provided a lots of dns encrypted server all over the world.  
 3. How's the security of this tool?  
   >As I said at first "currently there has no evidence showed that which ISP already hijack the http dns request between user's network and DNSpod server In China",so if you got wrong dns record or you found your ISP hijacked the httpdns request,please let me know and I'll consider to develop a better dns tool with encryption which has it's own server and client.   
-  >For security reason it will not using your local hosts file by default,but you can enable it by running it with **-hosts** params.
+  >For security reason it will not using your local hosts file by default,but you can enable it by running it with **-hosts** params.  
   >by version 1.5 now this tool will use standard DOH which will access https://doh.pub/dns-query for results,which consider better security performance.
 4. on windows there need at least 2 dns ipaddress set on ethernet settings?
   >the tool itself by default will listen on ```0.0.0.0```,so simple put main DNS as 127.0.0.1,another to your LAN address.(which like 192.168.1.x 172.0.1.x...)  
