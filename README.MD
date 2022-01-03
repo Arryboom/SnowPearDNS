@@ -2,7 +2,6 @@
 convert your dns request into http dns request and log them so we can avoid some simple dns hijack attack or help with debug dns issue.  
 ![GoReport](https://goreportcard.com/badge/github.com/arryboom/snowpeardns)  
 ![SnowPearDNS](https://github.com/Arryboom/SnowPearDNS/blob/master/ico/pear_128px.png)  
-A simple tool to convert your dns request into http dns request so we can avoid some dns hijack attack.
 ## Introduction
 
 > ISP's DNS hijack In China has been drive me nuts for a long time,and I've been tried for lots of dns encryption projects,their encryption and RFC standard extend was really good,but due to most of these projects doesn't have DNS server in China,so it always makes my daily browsing slowly.
