@@ -1,7 +1,7 @@
 # SnowPearDNS
-convert your dns request into httpdns request(DoH) and log them,Provide alt DNS to LAN with customized hosts.  
 ![GoReport](https://goreportcard.com/badge/github.com/arryboom/snowpeardns)  
 ![SnowPearDNS](https://github.com/Arryboom/SnowPearDNS/blob/master/ico/pear_128px.png)  
+convert your dns request into httpdns request(DoH) and log them,Provide alt DNS to LAN with customized hosts.  
 ## Introduction
 
 > ISP's DNS hijack In China has been drive me nuts for a long time,and I've been tried for lots of dns encryption projects,their encryption and RFC standard extend was really good,but due to most of these projects doesn't have DNS server in China,so it always makes my daily browsing slowly.
