@@ -1,5 +1,5 @@
 # SnowPearDNS
-convert your dns request into http dns request and log them so we can avoid some simple dns hijack attack or help with debug dns issue.  
+convert your dns request into httpdns request(DoH) and log them,Provide alt DNS to LAN with customized hosts.  
 ![GoReport](https://goreportcard.com/badge/github.com/arryboom/snowpeardns)  
 ![SnowPearDNS](https://github.com/Arryboom/SnowPearDNS/blob/master/ico/pear_128px.png)  
 ## Introduction
