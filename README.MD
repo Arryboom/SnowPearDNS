@@ -9,7 +9,7 @@ A simple tool to convert your dns request into http dns request so we can avoid 
   finally,I found that DNSpod have a simple Httpdns API server in China and currently there has no evidence showed which ISP already hijack the http dns request between user's network and DNSpod server, so I developed this tiny tool to make it work.  
   > by version 1.5 now this tool will use standard DOH which will access https://doh.pub/dns-query for results,which considered as a better security performance.
 
-- Current Version:   **1.7**
+- Current Version:   **1.8**
 - Language:golang  
 
 ## Usage
@@ -28,7 +28,7 @@ A simple tool to convert your dns request into http dns request so we can avoid 
 ![example](/ex.png)  
 **4.** Enjoy your browsing!
 
-
+>from version 1.8,you can now load dns records from ``-c <your hosts file location>`` option.  
 
 ## Tips
 
@@ -47,6 +47,7 @@ A simple tool to convert your dns request into http dns request so we can avoid 
 4. on windows there need at least 2 dns ipaddress set on ethernet settings?
   >the tool itself by default will listen on ```0.0.0.0```,so simple put main DNS as 127.0.0.1,another to your LAN address.(which like 192.168.1.x 172.0.1.x...)  
   >also by this you can serve the other teminal in your LAN if you like.
+
 
 ## Thanks
 - miekg  

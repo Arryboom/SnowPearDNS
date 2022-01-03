@@ -9,6 +9,10 @@ import (
 	"math/rand"
 	"net"
 	"net/http"
+	"os"
+	"path/filepath"
+	"runtime"
+	"strconv"
 	"strings"
 	"time"
 
@@ -19,14 +23,13 @@ import (
 
 var (
 	//server_url string = "http://119.29.29.29/d?dn=%s"
-	server_url string = "https://doh.pub/dns-query?name=%s&type=%s"
-	//server_url string
-	version string = "1.7"
-	//cache_time :=60*60*24
-	dnsAcache  = cache2go.Cache("DNACACHE")
-	dnsCcache  = cache2go.Cache("DNCCACHE")
-	hostsflag  *bool
-	cache_time = 60 * 60 * 24 * time.Second
+	server_url  string = "https://doh.pub/dns-query?name=%s&type=%s"
+	version     string = Version.String()
+	dnsAcache          = cache2go.Cache("DNACACHE")
+	dnsCcache          = cache2go.Cache("DNCCACHE")
+	hostsflag   *bool
+	lchostsflag *string
+	cache_time  = 60 * 60 * 24 * time.Second
 )
 
 type DOH_Answer struct {
@@ -106,7 +109,7 @@ func get_a(domain string) []string {
 		r, err := http.Get(url)
 
 		if err != nil {
-			fmt.Println(err)
+			//fmt.Println(err)
 			return []string{}
 		}
 
@@ -115,7 +118,7 @@ func get_a(domain string) []string {
 		buf, err := ioutil.ReadAll(r.Body)
 		//fmt.Println(string(buf))
 		if err != nil {
-			fmt.Println(err)
+			//fmt.Println(err)
 			return []string{}
 		}
 		//here we add res to cache
@@ -200,7 +203,7 @@ func get_cname(domain string) []string {
 		r, err := http.Get(url)
 
 		if err != nil {
-			fmt.Println(err)
+			//fmt.Println(err)
 			return []string{}
 		}
 
@@ -208,7 +211,8 @@ func get_cname(domain string) []string {
 
 		buf, err := ioutil.ReadAll(r.Body)
 		if err != nil {
-			fmt.Println(err)
+			//fmt.Println(err)
+
 			return []string{}
 		}
 		//here we add res to cache
@@ -365,12 +369,93 @@ func add_localhosts() {
 		}
 	}
 }
+func ReadAll(filePth string) ([]byte, error) {
+	f, err := os.Open(filePth)
+	if err != nil {
+		return nil, err
+	}
+	return ioutil.ReadAll(f)
+}
+func FileExist(path string) bool {
+	_, err := os.Lstat(path)
+	return !os.IsNotExist(err)
+}
+func parse_localdnsrecord() (int, bool) {
+	if *lchostsflag != "" {
+		// fmt.Println("loading Hosts file...")
+		hostsMap, err := hostsparser.ParseHosts(ReadAll(*lchostsflag))
+		if err != nil {
+			return 0, false
+		}
+		rcdcount := 0
+		for k, v := range hostsMap {
+			rcdcount = rcdcount + 1
+			dnsAcache.Add(k+".", 0, v)
+		}
+		return rcdcount, true
+	} else {
+		// get cwd config file
+		// 		path, err := os.Executable()
+		// if err != nil {
+		//     log.Printf(err)
+		// }
+		// dir := filepath.Dir(path)
+		// fmt.Println(path) // for example /home/user/main
+		// fmt.Println(dir)  // for example /home/user
+		// -----------
+		// func ReadAll(filePth string) ([]byte, error) {
+		// 	f, err := os.Open(filePth)
+		// 	if err != nil {
+		// 	 return nil, err
+		// 	}
+
+		// 	return ioutil.ReadAll(f)
+		//    }
+		path, err := os.Executable()
+		if err != nil {
+			log.Fatal(err)
+		}
+		dir := filepath.Dir(path)
+		// dir=dir+"/"
+		slash := "/"
+		switch runtime.GOOS {
+		case "windows":
+			slash = "\\"
+		}
+		confpath := dir + slash + "spdhosts.conf"
+		if FileExist(confpath) {
+			fmt.Println("Loading DNS records conf data from " + confpath)
+			hostsMap, err := hostsparser.ParseHosts(ReadAll(confpath))
+			if err != nil {
+				return 0, false
+			}
+			rcdcount := 0
+			for k, v := range hostsMap {
+				rcdcount = rcdcount + 1
+				dnsAcache.Add(k+".", 0, v)
+			}
+			return rcdcount, true
+		} else {
+			return 0, false
+		}
+
+	}
+}
 func main() {
 	fmt.Println("SnowPearDNS version: ", version)
 	fmt.Println("https://github.com/arryboom/SnowPearDNS")
-	hostsflag = flag.Bool("hosts", false, "using local hosts file,default false")
+	hostsflag = flag.Bool("hosts", false, "using local hosts file,default false.(Conflict with -c)")
+	lchostsflag = flag.String("c", "", "conf file path,default Current Directory spdhosts.conf")
 	flag.Parse()
 	add_localhosts()
+	if *hostsflag && *lchostsflag != "" {
+		fmt.Println("-hosts and -c enabled at the same time,ignore -c option")
+	} else {
+		ct, sig := parse_localdnsrecord()
+		if sig {
+			fmt.Println("Loaded " + strconv.Itoa(ct) + " dns records in conf.")
+		}
+	}
 	fmt.Println("Start Dns Server Now...")
 	if !(init_dohip()) {
 		fmt.Println("Failed to init DOH server's DNS resolve,pls check your network connection.")
