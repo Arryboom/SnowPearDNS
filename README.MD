@@ -31,6 +31,10 @@ convert your dns request into httpdns request(DoH) and log them,Provide alt DNS 
 >from version 1.8,you can now load dns records from ``-c <your hosts file location>`` option.  
 
 ## Tips
+  
+- typical deployment:  
+![example](/typical_deploy.png)    
+> to avoid unnessary disk io the spdhosts.conf will load into memory when startup.  
 
 1. Do you have a dns record cache in this tool?  
   >Yes,since sometimes http request will lost and DNSpod has limit on concurrency request made the http dns request very slow,I've add a memcache by using muesli's cache2go,default expiration time of one record haven't been hited is One day(60\*60\*24\*seconds).  Since it's cached in memory so everytime you restart this process it will force clear cache.   
