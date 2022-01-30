@@ -6,7 +6,7 @@ convert your dns request into httpdns request(DoH) and log them,Provide alt DNS 
 
 > ISP's DNS hijack In China has been drive me nuts for a long time,and I've been tried for lots of dns encryption projects,their encryption and RFC standard extend was really good,but due to most of these projects doesn't have DNS server in China,so it always makes my daily browsing slowly.
 
-  finally,I found that DNSpod have a simple Httpdns API server in China and currently there has no evidence showed which ISP already hijack the http dns request between user's network and DNSpod server(although under China law it has some wrong dns records as trade off but still better than hijacked by ISP), so I developed this tiny tool to make it work.  
+  finally,I found that DNSpod have a simple Httpdns API server in China and currently there has no evidence showed which ISP already hijack the http dns request between user's network and DNSpod server(although under China law dnspod has some wrong dns records as trade off but still better than hijacked by ISP), so I developed this tiny tool to make it work.  
   > by version 1.5 now this tool will use standard DOH which will access https://doh.pub/dns-query for results,which considered as a better security performance.
 
 - Current Version:   **1.8**
