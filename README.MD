@@ -7,7 +7,7 @@ convert your dns request into httpdns request(DoH) and log them,Provide alt DNS 
 > ISP's DNS hijack In China has been drive me nuts for a long time,and I've been tried for lots of dns encryption projects,their encryption and RFC standard extend was really good,but due to most of these projects doesn't have DNS server in China,so it always makes my daily browsing slowly.
 
   finally,I found that DNSpod have a simple Httpdns API server in China and currently there has no evidence showed which ISP already hijack the http dns request between user's network and DNSpod server(although under China law dnspod has some wrong dns records as trade off but still better than hijacked by ISP), so I developed this tiny tool to make it work.  
-  > by version 1.5 now this tool will use standard DOH which will access https://doh.pub/dns-query for results,which considered as a better security performance.
+  > by version 1.5 now this tool will use standard DoH which will access https://doh.pub/dns-query for results,which considered as a better security performance.
 
 - Current Version:   **1.8**
 - Language:golang  
@@ -48,7 +48,7 @@ convert your dns request into httpdns request(DoH) and log them,Provide alt DNS 
   >As I said at first "currently there has no evidence showed that which ISP already hijack the http dns request between user's network and DNSpod server In China",so if you got wrong dns record or you found your ISP hijacked the httpdns request,please let me know.(to be clear,the dnspod server itself may still gave you some wrong records,but as return you got dns records most resolve to China,this improves daily broswer experience if you physically in China,and dnspod is under China law so it got some wrong records but is still better if compare to ISP's default dns,which gave you alot wrong records due to law,or they think its bad,or they been hacked or someone in their company was looking for more dark profit and choose some specific area to hijack,the main goal this tool invented at first was to solve this issue that is raw udp dns requests to dnspod was hijacked by ISP coz dns requests on udp 53 was plain text and ISP's fake records always return first and real requests or response was droped)
   >For security reason it will not using your local hosts file by default,but you can enable it by running it with **-hosts** params.    
   
-  >by version 1.5 now this tool will use standard DOH which will access https://doh.pub/dns-query for results,which considered better security performance.remember that due to doh.pub is aslo a domain that need to resolve before we use it as DOH server,so there still need access old http dns server 119.119.119.119 first to get it's resolve when startup.  
+  >by version 1.5 now this tool will use standard DoH which will access https://doh.pub/dns-query for results,which considered better security performance.remember that due to doh.pub is aslo a domain that need to resolve before we use it as DOH server,so there still need access old http dns server 119.119.119.119 first to get it's resolve when startup.  
 4. on windows there need at least 2 dns ipaddress set on ethernet settings?
   >the tool itself by default will listen on ```0.0.0.0```,so simple put main DNS as 127.0.0.1,another to your LAN address.(which like 192.168.1.x 172.0.1.x...)  
   >also by this you can serve the other teminal in your LAN if you like.
